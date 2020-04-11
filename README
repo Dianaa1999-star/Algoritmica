@@ -1,0 +1,55 @@
+@Copyright Apostu-Croitoru Diana
+
+
+
+		Problema 1: Gigel trezorier la BNR	
+
+     In rezolvarea problemei , am tratat doua cazuri in functie de setul de
+instructiuni primit ca data de intrare. In primul caz , numarul de moduri
+in care se pot aranja bacnotele sunt date de formula 5 * (2 ^ (n - 1)). Formula
+este data de reprezentarea schematica a arborelui ,  unde 2 ^ (n - 1) este 
+numarul maxim de noduri de pe nivelul n , iar 5 reprezinta tipurile de bancnote.
+In al doilea caz, am luat o matrice dp, unde dp[i][j] reprezinta numarul de 
+modalitati de a aseza bacnotele cand avem i bacnote si j reprezinta ultimul
+tip de bacnote pus. In cazul de baza , in functie de bacnota, dp[2][j] va lua
+alegerile valide. In cazul general, dp[i][j] va fi generat de multimea alegerilor
+de la pasul anterior. Solutia va fi data de suma ultimelor alegeri din matricea
+dp ,implicit dp[n][i]. Complexitatea in primul caz e O(logn) , iar in al
+doilea caz e O(n).
+
+		Problema 2: Gigel si gardul
+
+	In rezolvarea problemei, am folosit algoritmul Greedy, deoarece la fiecare
+pas se alege cel mai bun candidat de la momentul respectiv. Citind datele de la 
+intrare mi-am creat un vector de perechi ce reprezinta gardul. Am sortat crescator 
+in functie de capatul dn stanga al gardului , iar daca cele doua capete sunt egale,
+am sortat descrescator in functie de capatul din dreapta. Voi lua ca reper prima
+bucata din gard. Voi verifica fiecare bucata din gard astfel : daca capatul 
+drept al bucatii curente e mai mic ca cel al bucatii anterioare, verific daca
+capatul din stanga al bucatii curente e mai mare ca cel al bucatii anterioare.
+Daca da, inseammna ca am o bucata redundanta. Verific daca updatez bucata de gard
+luata ca referinta , si o schimb daca trec la alt interval.Complexitatea este data
+de lungimea gardului , implicit O(nlogn).
+
+
+		Problema 3: Gigel bombonel
+
+	In rezolvarea problemei , am folosit programarea dinamica.
+Pentru cei n copii am citit intervalul de probleme rezolvate , si am salvat
+rezultatele in doi vectori (left si right) care retin capetele. Mi-am creeat o
+matrice dp , unde dp[i][j] reprezinta in cate moduri poti da j bomboane la 
+primii i copii. Pentru fiecare copil , iau j bomboane (unde j este mai mic
+decat totalitatea bomboanelor) care se regasesc in intervalul de probleme 
+rezolvate (left -> right). Acesta va lua in atatea moduri bomboane ca cel 
+precedent. Rezultatul se va regasi in dp[n][m] si reprezinta in câte moduri 
+poate oferi bomboane elevilor. Complexitatea este data de cele doua for-uri si un while O(n * m * p). 
+
+		Bonus: gigel la sală
+
+	In rezolvarea problemei, am retinut greutatea si numarul de repetari
+pentru n gantere (sub forma unei perechi) intr-un vector. Am sortat vectorul 
+descrescator si pentru fiecare gantera am calculat alegerea cea mai buna,in 
+functie de numarul total de repetari. Am folosit maxim M gantere, si am 
+reactualizat alegerea , recalculand numarul total de repetari . Rezultatul 
+se va actualiza mereu si va fi calculat dupa formula numarTotalRepetari ∗
+greutateaCeleiMaiUsoareGantereFolosite.Complexitatea este O(nlogn).
